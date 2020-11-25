@@ -4,6 +4,8 @@ Project: Sudoku Solver
 Description: Simple backtracking algorithm implementation
              to solve any Sudoku puzzle that has a solution
 """
+
+
 def solve(board):
     """
     Solves a sudoku board using backtracking
@@ -16,7 +18,7 @@ def solve(board):
     else:
         return True
 
-    for i in range(1,10):
+    for i in range(1, 10):
         if is_valid(board, (row, col), i):
             board[row][col] = i
 
@@ -26,6 +28,7 @@ def solve(board):
             board[row][col] = 0
 
     return False
+
 
 def find_empty(board):
     """
@@ -40,6 +43,7 @@ def find_empty(board):
                 return (i, j)
 
     return None
+
 
 def is_valid(bo, pos, num):
     """
@@ -67,10 +71,11 @@ def is_valid(bo, pos, num):
 
     for i in range(box_y*3, box_y*3 + 3):
         for j in range(box_x*3, box_x*3 + 3):
-            if bo[i][j] == num and (i,j) != pos:
+            if bo[i][j] == num and (i, j) != pos:
                 return False
 
     return True
+
 
 def print_board(bo):
     """
@@ -83,24 +88,25 @@ def print_board(bo):
             print("- - - - - - - - - - - - - -")
         for j in range(len(bo[0])):
             if j % 3 == 0:
-                print(" | ",end="")
+                print(" | ", end="")
 
             if j == 8:
                 print(bo[i][j], end="\n")
             else:
                 print(str(bo[i][j]) + " ", end="")
 
-#create the board
+
+# create the board
 BOARD = [
-    [7,8,0,4,0,0,1,2,0],
-    [6,0,0,0,7,5,0,0,9],
-    [0,0,0,6,0,1,0,7,8],
-    [0,0,7,0,4,0,2,6,0],
-    [0,0,1,0,5,0,9,3,0],
-    [9,0,4,0,6,0,0,0,5],
-    [0,7,0,3,0,0,0,1,2],
-    [1,2,0,0,0,7,4,0,0],
-    [0,4,9,2,0,6,0,0,7], 
+        [0, 0, 0, 7, 9, 0, 0, 3, 4],
+        [5, 0, 9, 2, 0, 0, 0, 1, 8],
+        [0, 3, 0, 6, 0, 0, 0, 0, 0],
+        [2, 4, 0, 1, 0, 0, 0, 0, 0],
+        [0, 0, 8, 0, 4, 0, 9, 0, 0],
+        [0, 0, 0, 0, 0, 6, 0, 4, 7],
+        [0, 0, 0, 0, 0, 8, 0, 2, 0],
+        [1, 8, 0, 0, 0, 2, 4, 0, 3],
+        [4, 7, 0, 0, 1, 3, 0, 0, 0]
 ]
 
 solve(BOARD)
